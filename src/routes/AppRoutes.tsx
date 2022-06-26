@@ -1,8 +1,8 @@
 import { FunctionComponent } from "react";
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import HomePage from "../homepage/HomePage";
-import NameMain from "../namePage/NameMain";
-import PasswordMain from "../passwordPage/PasswordMain";
+import HomePage from "../components/homepage/HomePage";
+import NameMain from "../components/names/NameMain";
+import PasswordMain from "../components/passwords/PasswordMain";
 
 interface AppRoutesProps {
     
