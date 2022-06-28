@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 import names from "../../store/name";
+import Nav from "../UI/nav/Nav";
 import Radio from "../UI/radio/Radio";
 import Range from "../UI/range/Range";
 import NameList from "./NameList";
@@ -11,15 +12,15 @@ interface NameMainProps {}
 const NameMain: FunctionComponent<NameMainProps> = observer(() => {
     const minRangeLength = names.namesProps.male ? 2 : 3;
     const maxRangeLength = names.namesProps.male ? 11 : 10;
-    console.log(maxRangeLength);
-
     return (
         <div>
             <header>
-                <nav>
-                    <Link to="/passwords">Passwords</Link>
-                    <Link to="/qrs">QRs</Link>
-                </nav>
+            <Nav
+                firstLink="passwords"
+                firstName="Passwords"
+                secondLink="qrs"
+                secondName="QR"
+                />
             </header>
 
             <main>
@@ -54,9 +55,12 @@ const NameMain: FunctionComponent<NameMainProps> = observer(() => {
 
                     <button onClick={() => names.generateNames()}>check</button>
 
-                    {names.namesList && (
+                    {names.namesProps.result.length? (
                         <NameList namesList={names.namesProps.result} />
-                    )}
+                    )
+                    : <p>Try to generate names or change search preference</p>
+                    
+                }
                 </div>
             </main>
         </div>

@@ -1,7 +1,10 @@
 import { observer } from "mobx-react-lite";
 import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
+import { useClipboard } from "use-clipboard-copy";
 import password from "../../store/password";
+import MyForm from "../UI/form/MyForm";
+import Nav from "../UI/nav/Nav";
 import Range from "../UI/range/Range";
 import PasswordList from "./password_list/PasswordList";
 
@@ -9,34 +12,39 @@ interface PasswordMainProps {}
 
 const PasswordMain: FunctionComponent<PasswordMainProps> = observer(() => {
 
+    const copyClick = useClipboard()
    
     return (
         <div className="passwords">
             <header>
-                <nav>
-                    <Link to="/qrs">QR </Link>
-                    <Link to="/names">Names</Link>
-                </nav>
+                <Nav
+                firstLink="names"
+                firstName="Names"
+                secondLink="qrs"
+                secondName="QR"
+                />
                 <div>Password generator</div>
             </header>
 
             <main>
                 <Range 
-                title={`PassLength`} 
+                title={`Password length`} 
                 value={password.passwords.pLength} 
                 storeFunc={e=>password.lengthHandler(+e.target.value)}
                 minLength={8}
                 maxLength={30}
                 />
                 <PasswordList/>
-                
-                <form action="" onSubmit={e=>e.preventDefault()}>
-                    <button onClick={()=>password.generatePassword()}>
-                        generate!
 
-                    </button>
-                    <input onChange={()=>{}} type="text" value={password.passwords.result}/>
-                </form>
+                <MyForm
+                title={'generate'}
+                sumbitFunc={(e)=>password.generatePassword(e)}
+                value={password.passwords.result}
+                valueHandler={()=>{}}
+                ref={copyClick.target}
+                inputCopy={copyClick.copy}
+                />
+            
             </main>
         </div >
     );

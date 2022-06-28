@@ -13,6 +13,7 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
             </header>
             <main className="nav">
                 <Link to='/passwords'>Passwords</Link>
+                <Link to='/qrs'>Qr-s</Link>
                 <Link to='/names'>Names</Link>
             </main>
         </>

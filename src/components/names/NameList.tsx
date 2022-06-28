@@ -5,6 +5,7 @@ interface NameListProps {
 }
 
 const NameList: FunctionComponent<NameListProps> = ({namesList}) => {
+
     return (
         <div>
             {namesList.map((name) => (

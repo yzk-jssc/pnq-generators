@@ -1,9 +1,9 @@
 import { makeAutoObservable } from "mobx"
+import { FormEvent } from "react";
 import { passwordsProps,  } from "../types/passwordTypes"
 
 const pLetters:string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-const pNumbers:number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const pCapLetters:string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+const pNumbers:number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9,0];
 let pSymbols:string[] = ['!', '@', '#', '$', '%', '?', '-', '+', '=', '~'];
 
 class Password{
@@ -46,15 +46,25 @@ class Password{
          
     }
 
-    generatePassword (){
+    generatePassword (e:FormEvent<HTMLFormElement>){
+        e.preventDefault()
         let arr:(string| number)[]=[];
 
         if(this.passwords.letters === true){
             arr = [...arr, ...pLetters]
         }
 
-        if(this.passwords.capLetters === true){
-            arr = [...arr, ...pCapLetters]
+        if(this.passwords.capLetters === true && this.passwords.letters){
+
+            let capNRegularLett:string[] = [...pLetters].map(c => Math.random() < .6 ? c : c.toUpperCase());
+
+            console.log(capNRegularLett)
+
+            arr = [...arr, ...capNRegularLett]
+        }else if (this.passwords.capLetters === true){
+            
+            let capLetters = [...pLetters].map(l=>l.toUpperCase())
+            arr = [...arr, ...capLetters]
         }
 
         if(this.passwords.symbols === true){
@@ -66,10 +76,12 @@ class Password{
         }
 
 
-        const shuffleArr = arr.sort(()=>Math.random()-0.5).slice(0,this.passwords.pLength+1)
+        const shuffleArr = arr.sort(()=>Math.random()-0.5).slice(0,this.passwords.pLength)
+        console.log( arr.sort(()=>Math.random()-0.5));
         
         this.passwords.result = (shuffleArr).join('')
     }
+
 
 }
 

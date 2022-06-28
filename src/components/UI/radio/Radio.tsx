@@ -1,4 +1,3 @@
-import { observer } from "mobx-react-lite";
 import { ChangeEvent, FunctionComponent } from "react";
 
 interface RadioProps {
@@ -11,13 +10,14 @@ const Radio: FunctionComponent<RadioProps> = ({isChecked,switchFunc,title}) => {
     return (
         <div>
             <input
+            key={title}
                 type="radio"
                 name=""
-                id=""
+                id={title}
                 checked={isChecked}
                 onChange={switchFunc}
             />
-            <label>{title}</label>
+            <label key ={`${Math.random()}`} htmlFor={title}>{title}</label>
         </div>
     );
 };
