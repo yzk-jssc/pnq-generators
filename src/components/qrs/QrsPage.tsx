@@ -4,13 +4,13 @@ import { FunctionComponent } from "react";
 import qr from "../../store/qr";
 import Nav from "../UI/nav/Nav";
 import MyForm from "../UI/form/MyForm";
-import QrResult from "./qr_result/QrResult";
+import classes from './QrsPage.module.scss'
 
 interface QrsPageProps {}
 
 const QrsPage: FunctionComponent<QrsPageProps> = observer(() => {
     return (
-        <div>
+        <div className={classes.qr}>
             <header>
                 <Nav
                     firstLink="passwords"
@@ -18,22 +18,26 @@ const QrsPage: FunctionComponent<QrsPageProps> = observer(() => {
                     secondLink="names"
                     secondName="Names"
                 />
+                <div className={classes.qr_title}>QR COnverter</div>
             </header>
 
-            <main>
+            <main className={classes.main}>
+                
+                <div className={classes.main_form}>
                 <MyForm
-                title="Enter something you want to convert to qr"
+                    title="Enter something you want to convert to qr"
                     value={qr.qrInfo.value}
                     sumbitFunc={e=>qr.getQrValue(e)}
                     valueHandler={(e) => qr.valueHandler(e.target.value)}
                 />
+                </div>
+                
                 {qr.qrInfo.link && (
-                    <div>
-                    <QrResult link={qr.qrInfo.link}/>
+                    <div className={classes.result}>
 
-                        <QRCodeSVG value={qr.qrInfo.link} />
+                        <QRCodeSVG className={classes.result_qr} value={qr.qrInfo.link} />
                         <br />
-                        <label htmlFor="">qr for {qr.qrInfo.link}</label>
+                        <label className={classes.result_title} htmlFor="">qr for {qr.qrInfo.link}</label>
                     </div>  
                 )}
             </main>

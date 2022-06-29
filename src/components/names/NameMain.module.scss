@@ -1,0 +1,32 @@
+.name{
+    &_title{
+        text-align: center;
+        padding-top: 20px;
+        font-size: 60px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    &_main{
+        font-size: 35px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        &_sub{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+
+
+.ranges{
+    width: 500px;
+}
+
+.radios{
+    display: flex;
+    padding: 10px 0;
+}

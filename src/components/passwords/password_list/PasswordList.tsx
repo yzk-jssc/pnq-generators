@@ -7,7 +7,7 @@ interface PasswordListProps {}
 
 const PasswordList: FunctionComponent<PasswordListProps> = observer(() => {
     return (
-        <div className="pass__params">
+        <>
             {/* LETTERS */}
             
             <OptionItem isValue={password.passwords.letters} itemTitle='Regular letters' switchFunc={() => password.lettersSwitch()}/>
@@ -25,7 +25,7 @@ const PasswordList: FunctionComponent<PasswordListProps> = observer(() => {
             <OptionItem isValue={password.passwords.capLetters} itemTitle='Capital letters' switchFunc={() => password.capLettersSwitch()}/>
 
 
-        </div>
+        </>
     );
 });
 

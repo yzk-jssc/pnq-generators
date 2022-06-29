@@ -1,33 +1,33 @@
-import { ChangeEvent, FormEvent, FormHTMLAttributes, FunctionComponent, RefObject,MouseEvent, ReactNode } from "react";
+import { ChangeEvent, FormEvent, FunctionComponent,MouseEvent } from "react";
 import MyButton from "../button/MyButton";
 import MyInput from "../input/MyInput";
+import classes from './MyForm.module.scss'
 
-interface MyFormProps extends FormHTMLAttributes<HTMLFormElement>{
+interface MyFormProps {
     value:string;
     title:string;
     sumbitFunc:(e:FormEvent<HTMLFormElement>)=>void
     valueHandler:(e:ChangeEvent<HTMLInputElement>)=>void
-    ref?:RefObject<any>;
+    inputRef?:any
     inputCopy?:(e:MouseEvent<HTMLInputElement>)=>void;
 }
 
 const MyForm: FunctionComponent<MyFormProps> = ({
-    value,title, sumbitFunc,valueHandler,ref,inputCopy, ...rest
+    value,title, sumbitFunc,valueHandler,inputRef,inputCopy, ...rest
 }) => {
     return (
-        <form onSubmit={sumbitFunc} >
-            <label>{title}</label>
-            <br />
+        <form onSubmit={sumbitFunc} className={classes.form}>
+            <label className={classes.title}>{title}</label>
             <MyInput
-            ref={ref}
+            innerRef={inputRef}
             onClick={inputCopy}
-            key={'123'}
+            key={title}
             value={value}
             onChange={valueHandler}
-        
+            {...rest}
             />
 
-            <MyButton key={(Math.random()).toString()}>Convert!</MyButton>
+            <MyButton  key={(Math.random()).toString()}>Generate!</MyButton>
         </form>
     );
 };

@@ -1,4 +1,5 @@
 import { ChangeEvent, FunctionComponent } from "react";
+import classes from './OptionItem.module.scss'
 
 interface OptionItemProps {
     isValue:boolean;
@@ -11,6 +12,7 @@ const OptionItem: FunctionComponent<OptionItemProps> = ({isValue,itemTitle,switc
 return (
         <div className="pass__options">
                 <input
+                className={classes.check_bx}
                 id={itemTitle}
                 key={itemTitle}
                     type="checkbox"

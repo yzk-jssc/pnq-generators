@@ -1,4 +1,5 @@
 import { ChangeEvent, FunctionComponent } from "react";
+import classes from './Radio.module.scss'
 
 interface RadioProps {
     isChecked:boolean;
@@ -10,6 +11,7 @@ const Radio: FunctionComponent<RadioProps> = ({isChecked,switchFunc,title}) => {
     return (
         <div>
             <input
+            className={classes.radio}
             key={title}
                 type="radio"
                 name=""

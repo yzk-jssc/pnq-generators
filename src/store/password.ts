@@ -42,7 +42,6 @@ class Password{
     
     symbolsSwitch(){
         this.passwords.symbols= !this.passwords.symbols
-        console.log(this.passwords.symbols);
          
     }
 

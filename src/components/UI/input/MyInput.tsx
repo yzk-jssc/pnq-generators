@@ -1,19 +1,20 @@
 import { ChangeEvent, FunctionComponent,MouseEvent, RefObject } from "react";
+import classes from './MyInput.module.scss'
 
 interface MyInputProps {
-    key:string;
     value:string;
     onClick?: (e:MouseEvent<HTMLInputElement>)=>void;
     onChange?: (e:ChangeEvent<HTMLInputElement>)=>void;
-    ref?:RefObject<any>;
+    innerRef?:RefObject<any>;
 
 }
  
-const MyInput: FunctionComponent<MyInputProps> = ({key,value,onClick,onChange,ref,...props}) => {
+const MyInput: FunctionComponent<MyInputProps> = ({value,onClick,onChange,innerRef: ref,...props}) => {
     return (
-        <input  
+        <input
+        placeholder="waitin for something"
+        className={classes.input}
         ref={ref}
-        key={key}
         value={value}
         type="text" 
         onClick={onClick}

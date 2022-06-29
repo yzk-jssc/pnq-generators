@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import classes from './NameList.module.scss'
 
 interface NameListProps {
     namesList:string[]
@@ -7,9 +8,9 @@ interface NameListProps {
 const NameList: FunctionComponent<NameListProps> = ({namesList}) => {
 
     return (
-        <div>
+        <div className={classes.list}>
             {namesList.map((name) => (
-                <div key={name}>{name}</div>
+                <div className={classes.item} key={name}>{name}</div>
             ))}
         </div>
     );

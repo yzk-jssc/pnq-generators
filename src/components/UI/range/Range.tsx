@@ -1,5 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { ChangeEvent, FunctionComponent } from "react";
+import classes from './Range.module.scss';
 
 interface RangeProps {
     title: string;
@@ -7,16 +8,17 @@ interface RangeProps {
     storeFunc: (e: ChangeEvent<HTMLInputElement>) => void;
     minLength: number;
     maxLength: number;
+    rangeClass?:string;
 }
 
 const Range: FunctionComponent<RangeProps> = observer(
-    ({ maxLength, minLength, title: rangeTitle, value, storeFunc }) => {
+    ({ maxLength, minLength, title: rangeTitle, value,rangeClass, storeFunc }) => {
         return (
-            <div className="name__range">
-                <label key={(maxLength).toString()}>{rangeTitle}</label>
+            <div className={classes.range}>
+                <label className={classes.range_title}  key={(minLength).toString()}>{rangeTitle}</label>
                 <br />
-                <label key={(minLength).toString()}>{value}</label>
                 <input
+                    className={classes.range_main}
                     key={rangeTitle}
                     type="range"
                     min={minLength}
@@ -24,6 +26,7 @@ const Range: FunctionComponent<RangeProps> = observer(
                     value={value}
                     onChange={storeFunc}
                 />
+                <label className={classes.range_length}  key={(maxLength).toString()}>{value}</label>
             </div>
         );
     }
