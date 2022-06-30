@@ -10,7 +10,8 @@ interface HomePageProps {
 const HomePage: FunctionComponent<HomePageProps> = () => {
     return (
         <>
-            <header >
+            <header>
+                
                 <h1 className={classes.header_title}>
                     {`Passwords-Names-Qr generators`}
                 </h1>

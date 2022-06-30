@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import { FunctionComponent } from "react";
 import names from "../../store/name";
 import MyButton from "../UI/button/MyButton";
-import Nav from "../UI/nav/Nav";
+import NavPages from "../UI/nav_pages/NavPages";
 import Radio from "../UI/radio/Radio";
 import Range from "../UI/range/Range";
 import NameList from "./NameList";
@@ -16,7 +16,7 @@ const NameMain: FunctionComponent<NameMainProps> = observer(() => {
     return (
         <div className={classes.name}>
             <header>
-            <Nav
+            <NavPages
                 firstLink="passwords"
                 firstName="Passwords"
                 secondLink="qrs"

@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 import { useClipboard } from "use-clipboard-copy";
 import password from "../../store/password";
 import MyForm from "../UI/form/MyForm";
-import Nav from "../UI/nav/Nav";
+import NavPages from "../UI/nav_pages/NavPages";
 import Range from "../UI/range/Range";
 import PasswordList from "./password_list/PasswordList";
 import classes from './PasswordMain.module.scss'
@@ -17,7 +17,7 @@ const PasswordMain: FunctionComponent<PasswordMainProps> = observer(() => {
     return (
         <div className="_passwords_header">
             <header>
-                <Nav
+                <NavPages
                 firstLink="names"
                 firstName="Names"
                 secondLink="qrs"

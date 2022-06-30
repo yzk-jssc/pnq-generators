@@ -1,13 +1,14 @@
-import React from 'react';
-import AppRoutes from './routes/AppRoutes';
-import './styles/page.scss'
+import React from "react";
+import AppRoutes from "./routes/AppRoutes";
+import "./styles/page.scss";
 
 function App() {
-  return (
-    <div className='App'>
-      <AppRoutes/>
-    </div>
-  );
+    return (
+        <div className="App">
+            
+            <AppRoutes />
+        </div>
+    );
 }
 
 export default App;

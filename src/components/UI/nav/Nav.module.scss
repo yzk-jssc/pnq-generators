@@ -1,36 +1,51 @@
 @import '../../../styles/colors.scss';
 
-.nav{
-    padding-top: 20px;
-    gap: 50px;
+.nav {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    // position: fixed;
+    justify-content: space-around;
+    padding: 10px 0 10px 0;
+    background-color: rgba(11, 93, 152, 0.452);
+    align-items: center;
+}
 
-    &_link{
-        font-size: 45px;
-        color: $text-color;
-        text-decoration: none;
-        text-align: center;
-        position: relative;
-        transition: all 2s;
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    position: relative;
+    transition: all 0.7s;
 
-        &:after{
-            position: absolute;
-            content: '';
-            height: 2px;
-            width: 50%;
-            background: $text-color;
-            
-            top: 90%;
-            z-index: -1;
-            left: 25%;
-            
-        };
+    &:hover {
+        color: rgb(68, 8, 207);
+    }
+}
 
-        &:hover{
-            
-            color: rgb(68, 8, 207);
-        };
-        
+.name{
+    font-size: 20px;
+    padding-top: 7px;
+    color: rgb(255, 255, 255);
+}
+
+.buttons{
+    display: flex;
+    gap: 5px;
+}
+
+.button{
+    padding: 5px;
+    border: 1px solid;
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    background-color: $button-text-color;
+    transition: all 0.5s;
+    &:hover {
+        color: $button-text-color;
+        background-color: rgb(0, 0, 0);
     }
 }

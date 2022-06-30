@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import { QRCodeSVG } from "qrcode.react";
 import { FunctionComponent } from "react";
 import qr from "../../store/qr";
-import Nav from "../UI/nav/Nav";
+import NavPages from "../UI/nav_pages/NavPages";
 import MyForm from "../UI/form/MyForm";
 import classes from './QrsPage.module.scss'
 
@@ -12,7 +12,7 @@ const QrsPage: FunctionComponent<QrsPageProps> = observer(() => {
     return (
         <div className={classes.qr}>
             <header>
-                <Nav
+                <NavPages
                     firstLink="passwords"
                     firstName="Passwords"
                     secondLink="names"
