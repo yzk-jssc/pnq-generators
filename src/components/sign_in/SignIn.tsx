@@ -12,8 +12,6 @@ const SignIn: FunctionComponent<SignInProps> = observer(() => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    user.signInfo.login= false
-
     const correctSignRedirect = (isAuth: boolean) => {
 
         if (isAuth) {
@@ -23,9 +21,9 @@ const SignIn: FunctionComponent<SignInProps> = observer(() => {
         } 
     };
 
-    // useEffect(() => {
+    useEffect(() => {
         correctSignRedirect(user.signInfo.login);
-    // }, [user.signInfo.login]);
+    }, [user.signInfo.login]);
 
     return (
         <div className={classes.sign_in}>

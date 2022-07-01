@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import { userInfo } from "os";
 import { Dispatch, FormEvent, SetStateAction } from "react";
 import { usersListAbout, userSwitch } from "../types/qrTypes";
 
@@ -49,7 +50,11 @@ class User {
     }
 
     signInfo={
-        login:true,
+        login:false,
+    }
+
+    signAgain(){
+        this.signInfo.login = false
     }
 
     signIn(
@@ -106,7 +111,11 @@ class User {
     }
 
     logOut(){
-
+        this.userInfo={
+            id:null,
+            auth:false,
+            login:''
+        }
     }
 }
 

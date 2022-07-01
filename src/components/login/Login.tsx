@@ -10,7 +10,7 @@ interface LoginProps {
     
 }
  
-const Login: FunctionComponent<LoginProps> = (() => {
+const Login: FunctionComponent<LoginProps> = observer(() => {
     const [login, setLogin] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const navigate =useNavigate()

@@ -26,14 +26,14 @@ const Nav: FunctionComponent<NavProps> = observer(() => {
                         <Link className={classes.button} to='/collection'>
                             my collection
                         </Link>
-                        <button className={classes.button}>
+                        <button onClick={()=>user.logOut()} className={classes.button}>
                             log out {/* модалку */}
                         </button>
     
                     </>
                     :<>
                         <Link className={classes.button} to={"/login"}>login</Link>
-                        <Link className={classes.button} to={"/sign"}>sign in</Link>
+                        <Link onClick={()=>user.signAgain()} className={classes.button} to={"/sign"}>sign in</Link>
                     </>
                     }
                     </div>
