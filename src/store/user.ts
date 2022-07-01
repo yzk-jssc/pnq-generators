@@ -1,28 +1,113 @@
 import { makeAutoObservable } from "mobx";
+import { Dispatch, FormEvent, SetStateAction } from "react";
+import { usersListAbout, userSwitch } from "../types/qrTypes";
 
-class User{
-    constructor(){
-        makeAutoObservable(this)
+class User {
+    constructor() {
+        makeAutoObservable(this);
     }
 
-    userInfo=[
-        {id:1, auth:false,login:'admin',password:'123',collection:[
-            {id:'pasw'}
-        ]}
+    usersList: usersListAbout[] = [
+        {
+            id: 1,
+            auth: false,
+            login: "root",
+            password: "" /* collection:[
+            {id:'pasw',items:'123'}
+        ]*/,
+        },
     ];
 
-    currUserInfo={
-        auth:true,
-        login:'admin',
-        password:'123'
+    userInfo: userSwitch = {
+        id: null,
+        auth: false,
+        login: "", //убрать внешнюю чтобы не изменять
+    }; //после функции логина просто ищется логин пароль и заноситься в инфу
+
+    
+
+    login(
+        e: FormEvent<HTMLFormElement>,
+        login: string,
+        password: string,
+        setPassword: Dispatch<SetStateAction<string>>
+    ) {
+        e.preventDefault();
+
+        const currentUser = this.usersList.filter((user) =>
+            login === user.login && password === user.password ? user : null
+        )[0];
+        if (currentUser) {
+            this.userInfo.id = currentUser.id;
+            this.userInfo.auth = true;
+            this.userInfo.login = currentUser.login;
+            // this.userInfo = currentUser
+        } else {
+            login = "enter correct login";
+            setPassword("enter correct LOGIN or PASSWORD");
+        }
     }
 
-
-    logOut(id:number){
-        const currUser = this.userInfo.filter(user=>user.id === id)
+    signInfo={
+        login:true,
     }
 
+    signIn(
+        e: FormEvent<HTMLFormElement>,
+        login: string,
+        password: string,
+        setLogin: Dispatch<SetStateAction<string>>,
+        setPassword: Dispatch<SetStateAction<string>>
+        
+    ) {
+        e.preventDefault();
 
+        const signCheckLoginIsNew: boolean | null = this.usersList.every(
+            (user) => user.login !== login
+        );
+
+        let lastId = this.usersList[this.usersList.length - 1].id + 1;
+            
+        if (signCheckLoginIsNew && password.length>3) {
+            this.usersList = [
+                ...this.usersList,
+                {
+                    id: lastId,
+                    auth: false,
+                    login: login,
+                    password: password,
+                },
+            ];
+            
+            this.signInfo.login=true
+
+
+        } else if(!signCheckLoginIsNew) {
+
+            setLogin('This login already use')
+
+            this.signInfo.login=false
+
+
+        }else if(login.length<=3) {
+
+            setLogin('Login must be more than 3 letters')
+
+            this.signInfo.login= false
+
+        }else if(password.length<=3){
+
+            setPassword('Password must be more than 3 letters')
+
+            this.signInfo.login= false
+
+        }
+
+    }
+
+    logOut(){
+
+    }
 }
 
-export default new User()
+export default new User();

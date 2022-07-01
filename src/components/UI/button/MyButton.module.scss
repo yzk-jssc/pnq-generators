@@ -6,6 +6,8 @@
     border-radius: calc(240px/6);
     transition: color 1s, background-color 0.8s;
     cursor: pointer;
+    font-family: 'JosefinSans';
+    padding: 5px;
     &:hover{
         color: $button-hover-text;
         background-color:$button-hover-bg ;

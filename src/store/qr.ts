@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx"
 import { FormEvent } from "react"
+import { qrAbout } from "../types/qrTypes"
 
 class Qr{
 
@@ -7,7 +8,7 @@ class Qr{
         makeAutoObservable(this)
     }
 
-    qrInfo={
+    qrInfo:qrAbout={
         value:'',
         link:''
     }

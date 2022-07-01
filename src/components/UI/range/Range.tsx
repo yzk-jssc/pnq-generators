@@ -1,4 +1,3 @@
-import { observer } from "mobx-react-lite";
 import { ChangeEvent, FunctionComponent } from "react";
 import classes from './Range.module.scss';
 
@@ -11,7 +10,7 @@ interface RangeProps {
     rangeClass?:string;
 }
 
-const Range: FunctionComponent<RangeProps> = observer(
+const Range: FunctionComponent<RangeProps> = 
     ({ maxLength, minLength, title: rangeTitle, value,rangeClass, storeFunc }) => {
         return (
             <div className={classes.range}>
@@ -30,6 +29,6 @@ const Range: FunctionComponent<RangeProps> = observer(
             </div>
         );
     }
-);
+
 
 export default Range;

@@ -39,8 +39,10 @@
 .button{
     padding: 5px;
     border: 1px solid;
+    cursor: pointer;
     text-decoration: none;
     font-size: 20px;
+    font-family: 'JosefinSans';
     color: rgb(0, 0, 0);
     background-color: $button-text-color;
     transition: all 0.5s;
