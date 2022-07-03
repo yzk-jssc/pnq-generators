@@ -25,6 +25,7 @@ const QrsPage: FunctionComponent<QrsPageProps> = observer(() => {
                 
                 <div className={classes.main_form}>
                 <MyForm
+                    inputPlaceholder="Enter there! "
                     title="Enter something you want to convert to qr"
                     value={qr.qrInfo.value}
                     sumbitFunc={e=>qr.getQrValue(e)}

@@ -44,7 +44,9 @@ const Login: FunctionComponent<LoginProps> = observer(() => {
 
                         <label className={classes.form_item_title} htmlFor="">login</label>
 
-                        <MyInput value={login} onChange={(e)=>setLogin(e.target.value)}/>
+                        <MyInput
+                        placeholder="Enter login"
+                        value={login} onChange={(e)=>setLogin(e.target.value)}/>
 
                     </div>
 
@@ -52,7 +54,9 @@ const Login: FunctionComponent<LoginProps> = observer(() => {
 
                         <label className={classes.form_item_title} htmlFor="">password</label>
 
-                        <MyInput value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                        <MyInput
+                        placeholder="Enter password"
+                        value={password} onChange={(e)=>setPassword(e.target.value)}/>
                         
                     </div>
                     <MyButton

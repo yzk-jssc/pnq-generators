@@ -6,6 +6,7 @@ import classes from './MyForm.module.scss'
 interface MyFormProps {
     value:string;
     title:string;
+    inputPlaceholder:string
     sumbitFunc:(e:FormEvent<HTMLFormElement>)=>void
     valueHandler:(e:ChangeEvent<HTMLInputElement>)=>void
     inputRef?:any
@@ -13,12 +14,13 @@ interface MyFormProps {
 }
 
 const MyForm: FunctionComponent<MyFormProps> = ({
-    value,title, sumbitFunc,valueHandler,inputRef,inputCopy, ...rest
+    value,title,inputPlaceholder, sumbitFunc,valueHandler,inputRef,inputCopy, ...rest
 }) => {
     return (
         <form onSubmit={sumbitFunc} className={classes.form}>
             <label className={classes.title}>{title}</label>
             <MyInput
+            placeholder={inputPlaceholder}
             innerRef={inputRef}
             onClick={inputCopy}
             key={title}

@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { FunctionComponent, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import user from "../../store/user";
 import MyButton from "../UI/button/MyButton";
 import MyInput from "../UI/input/MyInput";
@@ -40,6 +40,7 @@ const SignIn: FunctionComponent<SignInProps> = observer(() => {
                         </label>
 
                         <MyInput
+                        placeholder="Enter login(more than 3 letter)"
                             value={login}
                             onChange={(e) => setLogin(e.target.value)}
                         />
@@ -51,6 +52,7 @@ const SignIn: FunctionComponent<SignInProps> = observer(() => {
                         </label>
 
                         <MyInput
+                        placeholder="Enter password(more than 3 letter)"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />

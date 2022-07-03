@@ -51,6 +51,7 @@ const PasswordMain: FunctionComponent<PasswordMainProps> = observer(() => {
 
                 <div className={classes.password_item}>
                 <MyForm
+                inputPlaceholder={"Click 'generate!'"}
                 title={'result'}
                 sumbitFunc={(e)=>password.generatePassword(e)}
                 value={password.passwords.result}
