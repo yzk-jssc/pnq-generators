@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Collection from "../components/collection/Collection";
 import HomePage from "../components/homepage/HomePage";
 import Login from "../components/login/Login";
 import NameMain from "../components/names/NameMain";
@@ -21,6 +22,8 @@ const AppRoutes: FunctionComponent<AppRoutesProps> = () => {
                     <Route path="/" element={<HomePage />} />
                     <Route path='/login' element={<Login/>}/>
                     <Route path='/sign' element={<SignIn/>}/>
+                    <Route path='/collection' element={<Collection/>}/>
+
                     <Route path="/passwords" element={<PasswordMain />} />
                     <Route path="/qrs" element={<QrsPage />} />
                     <Route path="/names" element={<NameMain />} />

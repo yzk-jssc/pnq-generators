@@ -1,7 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { userInfo } from "os";
 import { Dispatch, FormEvent, SetStateAction } from "react";
-import { usersListAbout, userSwitch } from "../types/qrTypes";
+import { usersListAbout, userSwitch } from "../types/userTypes";
 
 class User {
     constructor() {
@@ -13,17 +12,20 @@ class User {
             id: 1,
             auth: false,
             login: "root",
-            password: "" /* collection:[
-            {id:'pasw',items:'123'}
-        ]*/,
+            password: "",
+            collection:[
+            {id:'names',items:['asd','zxc','1zxfc23','123',]},
+            {id:'passwords',items:['43sssssssss56','cvbnsssssssssssssssssssssssdx','hjklh','123','456',',,23423']},
+            //qrs mby soon
+        ],
         },
     ];
 
     userInfo: userSwitch = {
         id: null,
         auth: false,
-        login: "", //убрать внешнюю чтобы не изменять
-    }; //после функции логина просто ищется логин пароль и заноситься в инфу
+        login: "", 
+    }; 
 
     
 
@@ -81,6 +83,7 @@ class User {
                     auth: false,
                     login: login,
                     password: password,
+                    collection:[]
                 },
             ];
             

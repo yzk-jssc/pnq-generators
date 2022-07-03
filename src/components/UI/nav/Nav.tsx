@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { FunctionComponent } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import collection from "../../../store/collection";
 import user from "../../../store/user";
 import classes from './Nav.module.scss'
 
@@ -23,7 +24,7 @@ const Nav: FunctionComponent<NavProps> = observer(() => {
                         <div className={classes.name}>
                             {user.userInfo.login}
                         </div>
-                        <Link className={classes.button} to='/collection'>
+                        <Link onClick={()=>collection.getCollection()} className={classes.button} to='/collection'>
                             my collection
                         </Link>
                         <button onClick={()=>user.logOut()} className={classes.button}>
