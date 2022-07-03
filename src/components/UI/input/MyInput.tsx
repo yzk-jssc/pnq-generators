@@ -4,13 +4,15 @@ import classes from './MyInput.module.scss'
 interface MyInputProps {
     value:string;
     placeholder:string;
+    readOnly?:boolean;
     onClick?: (e:MouseEvent<HTMLInputElement>)=>void;
     onChange?: (e:ChangeEvent<HTMLInputElement>)=>void;
     innerRef?:RefObject<any>;
 
+
 }
  
-const MyInput: FunctionComponent<MyInputProps> = ({placeholder,value,onClick,onChange,innerRef: ref,...props}) => {
+const MyInput: FunctionComponent<MyInputProps> = ({placeholder,value,onClick,onChange,readOnly,innerRef: ref,...props}) => {
     return (
         <input
         placeholder={placeholder}
@@ -20,7 +22,7 @@ const MyInput: FunctionComponent<MyInputProps> = ({placeholder,value,onClick,onC
         type="text" 
         onClick={onClick}
         onChange={onChange}
-        {...props}
+        readOnly={readOnly}
         />
     );
 }

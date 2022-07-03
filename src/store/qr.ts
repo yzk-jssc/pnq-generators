@@ -23,7 +23,6 @@ class Qr{
         e.preventDefault()
 
         this.qrInfo.link = this.qrInfo.value
-        console.log(this.qrInfo.link);
         this.qrInfo.value =''
     }
 

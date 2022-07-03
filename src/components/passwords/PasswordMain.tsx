@@ -7,12 +7,16 @@ import NavPages from "../UI/nav_pages/NavPages";
 import Range from "../UI/range/Range";
 import PasswordList from "./password_list/PasswordList";
 import classes from './PasswordMain.module.scss'
+import MyButton from "../UI/button/MyButton";
+import collection from "../../store/collection";
 
 interface PasswordMainProps {}
 
 const PasswordMain: FunctionComponent<PasswordMainProps> = observer(() => {
 
     const copyClick = useClipboard()
+
+
    
     return (
         <div className="_passwords_header">
@@ -58,11 +62,19 @@ const PasswordMain: FunctionComponent<PasswordMainProps> = observer(() => {
                 valueHandler={()=>{}}
                 inputRef={copyClick.target}
                 inputCopy={copyClick.copy}
+                readOnly={true}
                 />
 
                 </div>
 
-
+                <footer className={classes.button}>
+                    {password.passwords.result && (
+                        <MyButton
+                        children='add this password in my collection'
+                        onClick={()=>collection.addPassword(password.passwords.result)}
+                        />
+                    )}
+                </footer>
                 
             
             </main>

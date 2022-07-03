@@ -18,5 +18,8 @@
     padding: 10px;
     border: 1px solid;
     text-align: center;
-    
+    position: relative;
+    &_remove{
+        position: absolute;
+    }
 }

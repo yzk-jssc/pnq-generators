@@ -19,9 +19,12 @@ const CollectionList: FunctionComponent<CollectionListProps> = observer(() => {
             </header>
                     <div className={classes.list}>
                         {currentItemsList.items.map((item) => (
+                            
                             <div className={classes.item} key={item}>
                                 {item}
                             </div>
+                            
+                            
                         ))}
                     </div>
                 </>

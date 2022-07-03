@@ -76,7 +76,6 @@ class Password{
 
 
         const shuffleArr = arr.sort(()=>Math.random()-0.5).slice(0,this.passwords.pLength)
-        console.log( arr.sort(()=>Math.random()-0.5));
         
         this.passwords.result = (shuffleArr).join('')
     }

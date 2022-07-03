@@ -32,6 +32,13 @@ class Collection{
 
     }
 
+    addPassword(password:string){
+       /* user.usersList.map(info=>//PASSWORD ITEMS IN USERLIST
+            info.collection.filter(cols=>cols.id==='passwords')[0].items
+        ) = 123 ?????*/
+        
+    }
+
 }
 
 export default new Collection()//текущий айди менять при переключении
