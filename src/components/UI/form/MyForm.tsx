@@ -8,14 +8,15 @@ interface MyFormProps {
     title:string;
     inputPlaceholder:string
     sumbitFunc:(e:FormEvent<HTMLFormElement>)=>void
-    valueHandler:(e:ChangeEvent<HTMLInputElement>)=>void
+    valueHandler:(e:ChangeEvent<HTMLInputElement>)=>void;
+    buttonValue?:string;
     readOnly?:boolean;
     inputRef?:any
     inputCopy?:(e:MouseEvent<HTMLInputElement>)=>void;
 }
 
 const MyForm: FunctionComponent<MyFormProps> = ({
-    value,title,inputPlaceholder, sumbitFunc,valueHandler,readOnly,inputRef,inputCopy, ...rest
+    value,title,inputPlaceholder, sumbitFunc,buttonValue,valueHandler,readOnly,inputRef,inputCopy, ...rest
 }) => {
     return (
         <form onSubmit={sumbitFunc} className={classes.form}>
@@ -30,7 +31,7 @@ const MyForm: FunctionComponent<MyFormProps> = ({
             readOnly={readOnly}
             />
 
-            <MyButton  key={(Math.random()).toString()}>Generate!</MyButton>
+            <MyButton  key={(Math.random()).toString()}>{buttonValue}</MyButton>
         </form>
     );
 };

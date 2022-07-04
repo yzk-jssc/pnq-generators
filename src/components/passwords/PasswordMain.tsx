@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { useClipboard } from "use-clipboard-copy";
 import password from "../../store/password";
 import MyForm from "../UI/form/MyForm";
@@ -9,6 +9,7 @@ import PasswordList from "./password_list/PasswordList";
 import classes from './PasswordMain.module.scss'
 import MyButton from "../UI/button/MyButton";
 import collection from "../../store/collection";
+import user from "../../store/user";
 
 interface PasswordMainProps {}
 
@@ -16,7 +17,9 @@ const PasswordMain: FunctionComponent<PasswordMainProps> = observer(() => {
 
     const copyClick = useClipboard()
 
-
+    useEffect(() => {
+        collection.swithCollectionsToPas()
+    }, [])
    
     return (
         <div className="_passwords_header">
@@ -63,18 +66,22 @@ const PasswordMain: FunctionComponent<PasswordMainProps> = observer(() => {
                 inputRef={copyClick.target}
                 inputCopy={copyClick.copy}
                 readOnly={true}
+                buttonValue={'Generate!'}
                 />
 
                 </div>
 
-                <footer className={classes.button}>
+                {user.userInfo.auth && (
+                    <footer className={classes.button}>
                     {password.passwords.result && (
                         <MyButton
                         children='add this password in my collection'
-                        onClick={()=>collection.addPassword(password.passwords.result)}
+                        onClick={()=>collection.addInMyCol(password.passwords.result)}
                         />
                     )}
-                </footer>
+                    </footer>
+                )}
+                
                 
             
             </main>

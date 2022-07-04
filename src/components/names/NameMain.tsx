@@ -1,5 +1,6 @@
 import { observer } from "mobx-react-lite";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
+import collection from "../../store/collection";
 import names from "../../store/name";
 import MyButton from "../UI/button/MyButton";
 import NavPages from "../UI/nav_pages/NavPages";
@@ -13,6 +14,11 @@ interface NameMainProps {}
 const NameMain: FunctionComponent<NameMainProps> = observer(() => {
     const minRangeLength = names.namesProps.male ? 2 : 3;
     const maxRangeLength = names.namesProps.male ? 11 : 10;
+
+    useEffect(() => {
+        collection.swithCollectionToNames()
+    }, [])
+
     return (
         <div className={classes.name}>
             <header>
@@ -74,6 +80,8 @@ const NameMain: FunctionComponent<NameMainProps> = observer(() => {
                     
                 }
                 </div>
+
+
             </main>
         </div>
     );

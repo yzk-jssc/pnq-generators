@@ -59,6 +59,7 @@ const Login: FunctionComponent<LoginProps> = observer(() => {
                         value={password} onChange={(e)=>setPassword(e.target.value)}/>
                         
                     </div>
+
                     <MyButton
                     children='LOGIN'
                     />

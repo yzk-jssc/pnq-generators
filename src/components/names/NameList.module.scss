@@ -1,11 +1,25 @@
+@import '../../styles/colors.scss';
+
 .list{
     padding-top: 20px;
     display: flex;
     gap:5px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.names{
+    display: flex;
+    gap: 5px;
 }
 
 .item{
     padding: 10px;
     border: 1px solid black;
     border-radius: 30px;
+    cursor: pointer;
+    &:hover{
+        background: $text-color;
+        color: $button-text-color;
+    }
 }

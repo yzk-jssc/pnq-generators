@@ -14,7 +14,7 @@ class Collection{
         items:['']}
     ] 
     currentList={
-        id:'qrs'
+        id:'passwords'
     }
 
     getCollection(){
@@ -32,11 +32,15 @@ class Collection{
 
     }
 
-    addPassword(password:string){
-       /* user.usersList.map(info=>//PASSWORD ITEMS IN USERLIST
-            info.collection.filter(cols=>cols.id==='passwords')[0].items
-        ) = 123 ?????*/
-        
+
+    addInMyCol(value:string){
+       
+        const Collection =user.usersList.filter(u=>u.id===user.userInfo.id)[0].collection.filter(cols=>cols.id === this.currentList.id)[0].items
+    
+        if(!Collection.includes(value)){
+            user.usersList.filter(u=>u.id===user.userInfo.id)[0].collection.filter(cols=>cols.id === this.currentList.id)[0].items = [...Collection,value]
+        }
+
     }
 
 }

@@ -30,6 +30,7 @@ const QrsPage: FunctionComponent<QrsPageProps> = observer(() => {
                     value={qr.qrInfo.value}
                     sumbitFunc={e=>qr.getQrValue(e)}
                     valueHandler={(e) => qr.valueHandler(e.target.value)}
+                    buttonValue='Convert!'
                 />
                 </div>
                 
