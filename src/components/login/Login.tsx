@@ -57,6 +57,7 @@ const Login: FunctionComponent<LoginProps> = observer(() => {
                         <MyInput
                         placeholder="Enter password"
                         value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                        {/* MODAL PASSWORD/LOGIN FALSE */}
                         
                     </div>
 

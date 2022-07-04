@@ -44,7 +44,6 @@ class User {
             this.userInfo.id = currentUser.id;
             this.userInfo.auth = true;
             this.userInfo.login = currentUser.login;
-            // this.userInfo = currentUser
         } else {
             login = "enter correct login";
             setPassword("enter correct LOGIN or PASSWORD");
