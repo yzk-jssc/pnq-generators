@@ -33,7 +33,8 @@ class User {
         e: FormEvent<HTMLFormElement>,
         login: string,
         password: string,
-        setPassword: Dispatch<SetStateAction<string>>
+        remember:boolean,
+        setPassword: Dispatch<SetStateAction<string>>,
     ) {
         e.preventDefault();
 
@@ -44,10 +45,23 @@ class User {
             this.userInfo.id = currentUser.id;
             this.userInfo.auth = true;
             this.userInfo.login = currentUser.login;
+            const userRememer= this.userInfo
+            if(remember){
+                localStorage.setItem('pnq-user_now',JSON.stringify(userRememer))
+            }
         } else {
             login = "enter correct login";
             setPassword("enter correct LOGIN or PASSWORD");
         }
+
+    }
+
+    checkUserRemember(){
+        localStorage.getItem('pnq-user_now')
+        ? this.userInfo = JSON.parse(localStorage.getItem('pnq-user_now')!)
+        : this.userInfo = {id: null,
+            auth: false,
+            login: "", }
     }
 
     signInfo={
@@ -118,6 +132,7 @@ class User {
             auth:false,
             login:''
         }
+        localStorage.setItem('pnq-user_now','')
     }
 }
 

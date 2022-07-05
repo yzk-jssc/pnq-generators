@@ -45,3 +45,18 @@
         }
     }
 }
+
+.check{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &_main{
+        width: 20px;
+        height: 20px;
+    }
+    &_title{
+        font-size: 20px;
+        font-weight: 700;
+        padding-top: 4px;
+    }
+}

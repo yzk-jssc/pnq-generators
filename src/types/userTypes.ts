@@ -4,7 +4,6 @@ export interface usersListAbout{
     login:string;
     password:string;
     collection:userCollection[]
-
 }
 
 export interface anonimUser{

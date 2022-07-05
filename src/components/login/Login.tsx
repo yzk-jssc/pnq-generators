@@ -13,7 +13,8 @@ interface LoginProps {
 const Login: FunctionComponent<LoginProps> = observer(() => {
     const [login, setLogin] = useState<string>('')
     const [password, setPassword] = useState<string>('')
-    const navigate =useNavigate()
+    const navigate =useNavigate();
+    const [remember, setRemember] = useState<boolean>(false)
 
     const correctLoginRedirect =(isAuth:boolean)=>{
         if(isAuth){
@@ -37,7 +38,7 @@ const Login: FunctionComponent<LoginProps> = observer(() => {
             <main className={classes.main}>
                 
                 <form className={classes.form} onSubmit={
-                    (e)=>user.login(e,login,password,setPassword)
+                    (e)=>user.login(e,login,password,remember,setPassword)
                 }>
 
                     <div className={classes.form_item}>
@@ -57,13 +58,25 @@ const Login: FunctionComponent<LoginProps> = observer(() => {
                         <MyInput
                         placeholder="Enter password"
                         value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                        {/* MODAL PASSWORD/LOGIN FALSE */}
                         
+                        
+            
                     </div>
 
                     <MyButton
                     children='LOGIN'
                     />
+                    <div className={classes.check}>
+
+                        <input 
+                        className={classes.check_main}
+                        type="checkbox" name="" id="check"
+                        checked={remember}
+                        onChange={(e)=>setRemember(e.target.checked)}/>
+
+                        <label className={classes.check_title} htmlFor="check">Remember me</label>
+
+                    </div>
                 </form>
             </main>
 
