@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import user from "../../store/user";
 import MyButton from "../UI/button/MyButton";
 import MyInput from "../UI/input/MyInput";
+import MyModal from "../UI/modal/MyModal";
 import classes from "./SignIn.module.scss";
 
 interface SignInProps {}
@@ -12,12 +13,11 @@ const SignIn: FunctionComponent<SignInProps> = observer(() => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const [visible, setVisible] = useState<boolean>(false)
+    console.log(visible)
     const correctSignRedirect = (isAuth: boolean) => {
-
-        if (isAuth) {
-            
-            navigate("/login")
-            
+        if (isAuth) {            
+            navigate("/login")            
         } 
     };
 
@@ -58,8 +58,17 @@ const SignIn: FunctionComponent<SignInProps> = observer(() => {
                         />
                     </div>
                     {/* MODAL PASSWORD/LOGIN FALSE */}
-                    <MyButton children="SIGN IN" />
+                    <MyButton onClick={()=>setVisible(true)} children="SIGN IN" />
                 </form>
+                
+                    {!user.signInfo.login && (
+                        <MyModal visible={visible} setVisible={setVisible}
+                        
+                        children='asd'
+                        />
+                    )}
+
+
             </main>
         </div>
     );

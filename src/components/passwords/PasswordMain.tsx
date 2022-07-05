@@ -6,10 +6,11 @@ import MyForm from "../UI/form/MyForm";
 import NavPages from "../UI/nav_pages/NavPages";
 import Range from "../UI/range/Range";
 import PasswordList from "./password_list/PasswordList";
-import classes from './PasswordMain.module.scss'
 import MyButton from "../UI/button/MyButton";
 import collection from "../../store/collection";
 import user from "../../store/user";
+
+import classes from './PasswordMain.module.scss'
 
 interface PasswordMainProps {}
 

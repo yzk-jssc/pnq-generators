@@ -66,10 +66,12 @@ class User {
 
     signInfo={
         login:false,
+        password:false
     }
 
     signAgain(){
         this.signInfo.login = false
+        this.signInfo.password = false
     }
 
     signIn(
@@ -101,6 +103,7 @@ class User {
             ];
             
             this.signInfo.login=true
+            this.signInfo.password=true
 
 
         } else if(!signCheckLoginIsNew) {
@@ -120,7 +123,7 @@ class User {
 
             setPassword('Password must be more than 3 letters')
 
-            this.signInfo.login= false
+            this.signInfo.password= false
 
         }
 
