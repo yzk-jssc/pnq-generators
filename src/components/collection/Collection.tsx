@@ -14,6 +14,7 @@ const Collection: FunctionComponent<CollectionProps> = () => {
     const navigate = useNavigate()
 
     const collectionRedirect =(isAuth:boolean)=>{
+
         if(!isAuth){
             return navigate('/login')
         }
@@ -22,7 +23,8 @@ const Collection: FunctionComponent<CollectionProps> = () => {
     useEffect(() => {
         collection.swithCollectionsToPas()
         collectionRedirect(user.userInfo.auth)
-    }, [user.userInfo.auth])
+
+    }, [user.userInfo.auth,])
     return (
         <div className={classes.collection}>
             <header className={classes.header}>

@@ -14,7 +14,7 @@ class User {
             login: "root",
             password: "",
             collection:[
-            {id:'names',items:[]},
+            {id:'names',items:['123sssssssssssssssssss','ssssssssss',',asdasdasdsad']},
             {id:'passwords',items:[]},
             //qrs mby soon
         ],

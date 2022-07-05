@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { FunctionComponent } from "react";
 import collection from "../../../store/collection";
+import MyButton from "../../UI/button/MyButton";
 import classes from "./CollectionList.module.scss";
 
 interface CollectionListProps {}
@@ -21,7 +22,13 @@ const CollectionList: FunctionComponent<CollectionListProps> = observer(() => {
                         {currentItemsList.items.map((item) => (
                             
                             <div className={classes.item} key={item}>
-                                {item}
+                                <div className={classes.item_content} >
+                                    {item}
+                                </div>
+                                <div className={classes.buttons}>
+                                    <MyButton onClick={()=>collection.deleteInMyCol(item)} >delete</MyButton>
+                                    {/* <button>copy</button> */}
+                                </div>
                             </div>
                             
                             
