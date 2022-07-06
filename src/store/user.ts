@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { Dispatch, FormEvent, SetStateAction } from "react";
-import { usersListAbout, userSwitch } from "../types/userTypes";
+import { signInfoAbout, usersListAbout, userSwitch } from "../types/userTypes";
 
 class User {
     constructor() {
@@ -27,16 +27,13 @@ class User {
         login: "", 
     }; 
 
-    
+    loginCheck: boolean | null =null
 
     login(
-        e: FormEvent<HTMLFormElement>,
         login: string,
         password: string,
         remember:boolean,
-        setPassword: Dispatch<SetStateAction<string>>,
     ) {
-        e.preventDefault();
 
         const currentUser = this.usersList.filter((user) =>
             login === user.login && password === user.password ? user : null
@@ -50,8 +47,7 @@ class User {
                 localStorage.setItem('pnq-user_now',JSON.stringify(userRememer))
             }
         } else {
-            login = "enter correct login";
-            setPassword("enter correct LOGIN or PASSWORD");
+            this.loginCheck = false
         }
 
     }
@@ -61,12 +57,14 @@ class User {
         ? this.userInfo = JSON.parse(localStorage.getItem('pnq-user_now')!)
         : this.userInfo = {id: null,
             auth: false,
-            login: "", }
+            login: "", 
+        }
     }
 
-    signInfo={
-        login:false,
-        password:false
+    signInfo:signInfoAbout={
+        login:null,
+        password:null,
+        uniqLogin:null,
     }
 
     signAgain(){
@@ -75,14 +73,15 @@ class User {
     }
 
     signIn(
-        e: FormEvent<HTMLFormElement>,
         login: string,
         password: string,
-        setLogin: Dispatch<SetStateAction<string>>,
-        setPassword: Dispatch<SetStateAction<string>>
         
     ) {
-        e.preventDefault();
+        this.signInfo ={
+            login:null,
+            password: null,
+            uniqLogin: null,
+        }
 
         const signCheckLoginIsNew: boolean | null = this.usersList.every(
             (user) => user.login !== login
@@ -90,40 +89,39 @@ class User {
 
         let lastId = this.usersList[this.usersList.length - 1].id + 1;
             
-        if (signCheckLoginIsNew && password.length>3) {
-            this.usersList = [
-                ...this.usersList,
-                {
-                    id: lastId,
-                    auth: false,
-                    login: login,
-                    password: password,
-                    collection:[]
-                },
-            ];
-            
-            this.signInfo.login=true
-            this.signInfo.password=true
+        if(!signCheckLoginIsNew) {
 
 
-        } else if(!signCheckLoginIsNew) {
-
-            setLogin('This login already use')
-
-            this.signInfo.login=false
+            this.signInfo.uniqLogin=false
+            this.signInfo.password= true
 
 
         }else if(login.length<=3) {
-
-            setLogin('Login must be more than 3 letters')
 
             this.signInfo.login= false
 
         }else if(password.length<=3){
 
-            setPassword('Password must be more than 3 letters')
-
             this.signInfo.password= false
+
+        }else if (signCheckLoginIsNew && password.length>3 && login.length>=3) {
+    
+                this.usersList = [
+                    ...this.usersList,
+                    {
+                        id: lastId,
+                        auth: false,
+                        login: login,
+                        password: password,
+                        collection:[]
+                    },
+                ];
+                
+                this.signInfo.login=true
+                this.signInfo.password=true
+                this.signInfo.uniqLogin=true
+            
+        }else{
 
         }
 

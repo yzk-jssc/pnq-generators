@@ -1,9 +1,10 @@
 import { observer } from "mobx-react-lite";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FormEvent, FunctionComponent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import user from "../../store/user";
 import MyButton from "../UI/button/MyButton";
 import MyInput from "../UI/input/MyInput";
+import MyModal from "../UI/modal/MyModal";
 import classes from './Login.module.scss'
 
 interface LoginProps {
@@ -15,6 +16,17 @@ const Login: FunctionComponent<LoginProps> = observer(() => {
     const [password, setPassword] = useState<string>('')
     const navigate =useNavigate();
     const [remember, setRemember] = useState<boolean>(false)
+    const [visible, setVisible] = useState<boolean>(false)
+
+    const submitLoginHandler= (e:FormEvent<HTMLFormElement>) =>{
+        e.preventDefault()
+
+        user.login(login,password,remember)
+
+        if(!user.loginCheck){
+            setVisible(true)
+        }
+    }
 
     const correctLoginRedirect =(isAuth:boolean)=>{
         if(isAuth){
@@ -38,7 +50,7 @@ const Login: FunctionComponent<LoginProps> = observer(() => {
             <main className={classes.main}>
                 
                 <form className={classes.form} onSubmit={
-                    (e)=>user.login(e,login,password,remember,setPassword)
+                    (e)=>submitLoginHandler(e)
                 }>
 
                     <div className={classes.form_item}>
@@ -78,6 +90,13 @@ const Login: FunctionComponent<LoginProps> = observer(() => {
 
                     </div>
                 </form>
+
+                {!user.loginCheck && (
+                        <MyModal visible={visible} setVisible={setVisible}
+                        
+                        children='Enter correct login or password'
+                    />
+                )}
             </main>
 
         </div>

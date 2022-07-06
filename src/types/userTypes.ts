@@ -18,4 +18,10 @@ export interface userCollection{
 
 }
 
+export interface signInfoAbout{
+    login:boolean | null
+    password:boolean | null
+    uniqLogin:boolean | null
+}
+
 export type userSwitch = usersListAbout | anonimUser
